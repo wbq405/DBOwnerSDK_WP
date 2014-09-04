@@ -138,7 +138,7 @@ namespace WP8DBOwnerSDK
             phoneApplicationInitialized = true;
 
             //引入DBOwnerSDK
-            dbOwnerSDK = new DBOwnerSDK("app13", "52e8e282b7ed567764dcc95d5887f472", "eUhnSFgyWWFpZFNIbStaa3hYelRpQT09", "", "", "wpstore");
+            dbOwnerSDK = new DBOwnerSDK("xxxxxx", "xxxxxx", "xxxxxx", "xxxxxx", "xxxxxx", "xxxxxx");
         }
 
         // Do not add any additional code to this method
