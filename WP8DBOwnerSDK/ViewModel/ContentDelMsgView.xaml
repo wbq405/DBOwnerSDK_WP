@@ -1,0 +1,62 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WP8DBOwnerSDK.ViewModel.ContentDelMsgView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="#f1f1f1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="0,17,0,10" Width="440">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="methodTitle" FontSize="20" Foreground="#4c4c4c" Width="380" />
+                <HyperlinkButton Content="返回" Margin="0,0,0,0" x:Name="clickBack" Foreground="#4c4c4c" Click="click_Back" />
+            </StackPanel>
+            <TextBlock x:Name="methodName" Margin="9,0,0,0" FontSize="50" Foreground="#4c4c4c" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,10,0,10" Width="440">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="360" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="id："  FontSize="20" Height="30" Foreground="#4c4c4c" />
+                <TextBox Grid.Column="1" Grid.Row="0" Name="DBOwner_id" BorderBrush="#43a0ed" Height="72" HorizontalAlignment="Center" FontSize="25"  VerticalAlignment="Top" Foreground ="#015EAC" Width="380" />
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="类型："  FontSize="20" Height="30" Foreground="#4c4c4c" />
+                <RadioButton Grid.Column="1" Grid.Row="1" Content="发送信息" Name="type1" GroupName="type" Foreground ="#4c4c4c" IsChecked="true" Background="#000000" />
+                <RadioButton Grid.Column="1" Grid.Row="2" Content="收到信息" Name="type2" GroupName="type" Foreground ="#4c4c4c" Background="#000000" />
+            </Grid>
+            <Button Name="DBOwnerDel" Content="删除"  Width="460" Height="72" HorizontalAlignment="Center" VerticalAlignment="Top" Click="del_Click" Foreground="#ffffff" Background="#43a0ed" Padding="0" Margin="0" BorderThickness="0"></Button>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="2" Margin="12,0,12,0">
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

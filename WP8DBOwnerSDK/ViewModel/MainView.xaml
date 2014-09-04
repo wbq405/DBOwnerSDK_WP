@@ -1,0 +1,102 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="WP8DBOwnerSDK.ViewModel.MainViewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+
+        <ProgressBar Height="54" HorizontalAlignment="Left" Margin="17,27,0,0" Name="DBprogressPageBar" VerticalAlignment="Top" Width="390" IsIndeterminate="True" />
+
+        <phone:Panorama Title="DBOwnerSDK" x:Name="panoramaView" Background="#f1f1f1" Foreground="#4c4c4c">
+
+            <!--Panorama auth-->
+            <phone:PanoramaItem Header="Auth接口" Orientation="Horizontal">
+                <StackPanel Margin="0,4,0,0" Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel x:Name="intrWrap">
+                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal" VerticalAlignment="Top" Background="#43a0ed" Width="400" Height="200">
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                                <Image x:Name="headPortrait" Loaded="load_envent" Width="200" Height="200" HorizontalAlignment="Left"  Stretch="UniformToFill" Margin="0,0,0,0" />
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,0" Orientation="Vertical" VerticalAlignment="Top">
+                                <TextBlock x:Name="UserName" Text="{Binding methodTitle}" Width="176" Height="50" HorizontalAlignment="left" FontSize="30" Foreground="#ffffff" Margin="12,12,12,0" />
+                                <TextBlock x:Name="UserEmail" Text="{Binding methodContent}" Width="176"  HorizontalAlignment="left" FontSize="20" TextWrapping="Wrap" Foreground="#ffffff" Margin="12,0,12,12" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel x:Name="chooseMethods" Margin="0,12,0,0" Orientation="Vertical" VerticalAlignment="Top" Visibility="Visible">
+                            <Button Click="Button_Click" Padding="0" BorderThickness="0" Margin="0,-10,0,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Background="#43a0ed" Width="400" Height="100">
+                                    <TextBlock x:Name="chooseMethod" Text="选择方法" Width="400" Height="40" TextAlignment="Center" FontSize="30" Foreground="#ffffff" Margin="0,25,0,0" />
+                                </StackPanel>
+                            </Button>
+                            <Button Click="check_Click" Padding="0" BorderThickness="0" Margin="0,-10,0,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Background="#43a0ed" Width="400" Height="100">
+                                    <TextBlock Text="查看方法" Width="400" Height="40" TextAlignment="Center" FontSize="30" Foreground="#ffffff" Margin="0,25,0,0" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel x:Name="chooseWrap" Margin="0,0,0,0" Orientation="Horizontal" VerticalAlignment="Top" Visibility="Collapsed">
+                        <ProgressBar Height="54" HorizontalAlignment="Left" Margin="17,27,0,0" x:Name="DBprogressBar" VerticalAlignment="Top" Width="390" IsIndeterminate="True" Visibility="Collapsed" />
+                        <ListBox x:Name="DBOwner_way" Width="424" Height="460" Padding="0" Margin="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Click="choose_Click" BorderThickness="0" Margin="0,-20,0,0" Padding="0" Width="424">
+                                        <StackPanel x:Name="methodWrap" Orientation="Vertical" VerticalAlignment="Top" Width="424" Height="100" Background="#43a0ed">
+                                            <TextBlock x:Name="methodTitle" Text="{Binding title}" Width="424" Height="40" HorizontalAlignment="left" FontSize="30" Foreground="#ffffff" Margin="12,15,0,0" />
+                                            <TextBlock x:Name="methodContent" Text="{Binding content}" Width="424" Height="40"  HorizontalAlignment="left" FontSize="20"  Foreground="#ffffff" Margin="12,0,0,0" />
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </phone:PanoramaItem>
+
+            <!--Panorama ad-->
+            <phone:PanoramaItem Header="广告类型">
+                <Grid>
+                    <StackPanel Margin="0,-8,16,0" Orientation="Vertical" VerticalAlignment="Top">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Button Click="AdFullClick" BorderThickness="0" Padding="0" Margin="0" Width="210">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Background="#00bcc3" Height="188" Width="188">
+                                    <TextBlock x:Name="adFullScreen" Text="全屏广告" FontSize="30" Foreground="#ffffff"  Width="188" TextAlignment="Center" Margin="0,70,0,0" />
+                                </StackPanel>
+                            </Button>
+                            <Button Click="AdInsertClick" BorderThickness="0" Padding="0" Margin="0" Width="210">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Background="#00bcc3" Height="188" Width="188">
+                                    <TextBlock x:Name="adInsertScreen" Text="插屏广告" FontSize="30" Foreground="#ffffff"  Width="188" TextAlignment="Center" Margin="0,70,0,0" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="0">
+                            <Button Click="AdBannerUpClick" BorderThickness="0" Padding="0" Margin="0" Width="210">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Background="#00bcc3" Height="188" Width="200">
+                                    <TextBlock x:Name="adBannerScreen" Text="顶部横幅广告"  FontSize="30" Foreground="#ffffff" Width="188" TextAlignment="Center" Margin="0,70,0,0" />
+                                </StackPanel>
+                            </Button>
+                            <Button Click="AdBannerDownClick" BorderThickness="0" Padding="0" Margin="0" Width="210">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Background="#00bcc3" Height="188" Width="200">
+                                    <TextBlock x:Name="dbTest" Text="底部横幅广告"  FontSize="30" Foreground="#ffffff" Width="188" TextAlignment="Center" Margin="0,70,0,0" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </phone:PanoramaItem>
+
+        </phone:Panorama>
+    </Grid>
+
+</phone:PhoneApplicationPage>
